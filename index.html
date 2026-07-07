@@ -151,7 +151,8 @@
       opacity: 0.8;
       animation: bounce-arrow 2s infinite;
       transition: opacity 0.3s;
-      pointer-events: none;
+      pointer-events: auto;
+      cursor: pointer;
     }
     .scroll-arrow.hidden { opacity: 0; }
     @keyframes bounce-arrow {
@@ -222,6 +223,9 @@
         const nearBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 100;
         scrollArrow.classList.toggle('hidden', nearBottom);
       }, { passive: true });
+      scrollArrow.addEventListener('click', () => {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      });
     }
   </script>
 </body>
